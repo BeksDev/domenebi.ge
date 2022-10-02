@@ -1,0 +1,69 @@
+$dark-color:#000000;
+$light-color:#f3f4f6;
+$gray-color:#9ca3af;
+$border-light:#e5e7eb;
+$text-color-gray:#6b7280;
+$green-color:#99cc66;
+$body-color: #f9f9fa;
+$border-color: #e9e9f0;
+$accordion-color: #f3f4f6;
+$count-color:#ef4444;
+$h4-color:#858b96;
+
+
+// GRID
+$grid-columns: (
+  12,
+  16,
+  10
+);
+
+$grid-max-columns: max($grid-columns...);
+
+
+$col-gap: 15px;
+$row-gap: 15px;
+
+
+$breakpoints: (
+  xs: 576px,
+  sm: 768px,
+  md: 992px,
+  lg: 1200px,
+);
+$container-max-width: (
+  xs: 540px,
+  sm: 720px,
+  md: 960px,
+  lg: 1287px,
+);
+
+
+$breakpoint-areas: (
+  desktop: '(min-width: #{map-get($breakpoints, ' md')})',
+  tablet-up: '(min-width: #{map-get($breakpoints, ' sm')})',
+  tablet: '(max-width: #{map-get($breakpoints, ' md') - 0.02px}) and (min-width: #{map-get($breakpoints, ' sm')})',
+  tablet-down: '(max-width: #{map-get($breakpoints, ' md') - 0.02px})',
+  mobile: '(max-width: #{map-get($breakpoints, ' sm') - 0.02px})',
+);
+
+
+$responsive-max-col: (
+  desktop: 8,
+  tablet: 6,
+  mobile: 4,
+);
+
+
+$flex-on-breakpoint: (
+  flexible: 'none',
+  flexible-tablet: 'tablet-down',
+  flexible-mobile: 'mobile',
+);
+
+
+$order-on-breakpoint: (
+  desktop: 'desktop',
+  tablet: 'tablet',
+  mobile: 'mobile',
+);

@@ -1,0 +1,182 @@
+@import "./mixins/grid";
+
+
+
+.container,
+.container-fluid {
+  width: 100%;
+  margin: auto;
+  padding: 0 15px;
+
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+.p-0 {
+  padding: 0;
+}
+
+.container {
+
+  @each $point,
+  $width in $breakpoints {
+    @media (min-width: $width) {
+      max-width: map-get($container-max-width, $point);
+    }
+  }
+}
+
+
+.hidden-desktop,
+.hidden-tablet-desktop,
+.show-only-tablet,
+.show-only-mobile {
+  @include respond-to('desktop') {
+    display: none !important;
+  }
+}
+
+.hidden-tablet,
+.hidden-tablet-desktop,
+.hidden-tablet-mobile,
+.show-only-desktop,
+.show-only-mobile {
+  @include respond-to('tablet') {
+    display: none !important;
+  }
+}
+
+.hidden-mobile,
+.hidden-tablet-mobile,
+.show-only-desktop,
+.show-only-tablet {
+  @include respond-to('mobile') {
+    display: none !important;
+  }
+}
+
+
+.grid,
+%grid {
+  display: flex;
+  position: relative;
+  flex-flow: row wrap;
+  margin: (-($row-gap / 2)) (-($col-gap / 2));
+}
+
+.col,
+%col {
+  position: relative;
+  padding: ($row-gap / 2) ($col-gap / 2);
+  max-width: 100%;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+@each $columns in $grid-columns {
+
+
+  .grid-#{$columns} {
+    @extend %grid;
+  }
+
+  @for $i from 1 through $columns {
+
+
+    @if ($columns ==$grid-max-columns) {
+      .col-#{$i} {
+        @extend %col;
+      }
+    }
+
+
+    .grid-#{$columns}>.col-#{$i} {
+      width: percentage($i / $columns);
+    }
+
+
+    @if ($i < $columns) {
+      .grid-#{$columns}>.offset-#{$i} {
+        margin-left: percentage($i / $columns);
+      }
+    }
+  }
+}
+
+
+.col-auto {
+  @extend %col;
+  width: auto;
+}
+
+@include make-flex-all();
+
+@include make-order-all();
+
+
+@include make-responsive-all();
+
+
+.no-gaps {
+  margin: 0;
+
+  >.col,
+  >[class*=col-] {
+    padding: 0;
+  }
+}
+
+.d-flex {
+  display: flex;
+}
+
+
+.align-center {
+  justify-content: center;
+}
+
+.align-right {
+  justify-content: flex-end;
+}
+
+.align-space-around {
+  justify-content: space-around;
+}
+
+.align-space-between {
+  justify-content: space-between;
+}
+
+.align-top {
+  align-items: flex-start;
+}
+
+.align-middle {
+  align-items: center;
+}
+
+.align-bottom {
+  align-items: flex-end;
+}
+
+
+.w-100 {
+  width: 100% !important;
+}
+
+
+.ml-auto {
+  margin-left: auto !important;
+}
+
+.mr-auto {
+  margin-right: auto !important;
+}
+
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
