@@ -147,14 +147,28 @@ for (let i = 0; i < filter_categories.length; i++) {
   filter_categories[i].addEventListener('change', (event) => {
 
     let new_domainList = domainList.filter(el => {
-      return el.domainExtension == event.target.value
-      // console.log(event.target.value);
+      return el.categories.includes(parseInt(event.target.value))
     });
 
     domain_list_data(new_domainList);
   });
 }
 // end category filters
+// domain filters
+// const filter_extentions = document.getElementsByClassName('filter-by-category');
+
+// for (let i = 0; i < filter_extentions.length; i++) {
+
+//   filter_extentions[i].addEventListener('change', (event) => {
+
+//     let new_domainList = domainList.filter(el => {
+//       return el.domainExtension == event.target.value 
+//     });
+
+//     domain_list_data(new_domainList);
+//   });
+// }
+// domain filters
 
 
 var acc = document.getElementsByClassName("accordion");
